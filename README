@@ -3,8 +3,8 @@ deploy it to the cloud
 
 go into the fwsimple.py and fwthread.py files and update the domain variable to your apps domain.
 
-the expected result for the 2 scripts are to create an entity on the first push and update it 
-with a different name on all other requests
+the expected result for the 2 scripts is to create an entity on the first push and update it 
+with a different name on all other requests.
 
 ./fwsimple.py 
 
@@ -12,5 +12,5 @@ the responses of the app are as expected. only 1 entity is created and after 10 
 
 ./fwthread.py
 
-because of multiple threads pushing the info simultaneously the and different machines are hit with the requests,
+because of multiple threads pushing the info simultaneously and different machines are hit with the requests,
 multiple entities are created. the result is not as expected!
