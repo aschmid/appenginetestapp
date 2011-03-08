@@ -1,0 +1,49 @@
+application: purple-fashion
+version: dev
+runtime: python
+api_version: 1
+
+builtins:
+- remote_api: on
+- datastore_admin: on
+
+inbound_services:
+- warmup
+
+handlers:
+#enable remote api for bulkloader.py
+- url: /remote_api
+  script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py
+  login: admin
+
+#the stats interface
+- url: /stats.*
+  script: $PYTHON_LIB/google/appengine/ext/appstats/ui.py
+  login: admin
+
+
+- url: .*
+  script: app.py
+  
+skip_files: |
+  ^(.*/)?(
+  (app\.yaml)|
+  (app\.yml)|
+  (index\.yaml)|
+  (index\.yml)|
+  (#.*#)|
+  (.*~)|
+  (.*\.py[co])|
+  (.*/RCS/.*)|
+  (\..*)|
+  (data.*)|
+  (.*esproj)|
+  (.*\.fla)|
+  (.*\.otf)|
+  (.*\.ttf)|
+  (.*\.php*)|
+  (.*\.md*)|
+  (.*\.sh*)|
+  (.*/fonts/src/.*)|
+  (.*gz)|
+  )$
